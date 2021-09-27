@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Simple Form</title>
+  </head>
+  <body>
+    <section class="center upper-form-register">
+      <section>
+        <h2>Contact</h2>
+        <h3>Complete the blanks</h3>
+      </section>
+      <section class="form-register center">
+        <fieldset>
+          <legend class="legend">Personal Information</legend>
+          <label class="label">Name</label>
+          <br />
+          <input class="controls" type="text" placeholder=" Your name" id="name"/>
+          <br />
+          <label class="label">Surname</label>
+          <br />
+          <input class="controls" type="text" placeholder="Your surname" id = "surname" />
+          <br />
+          <label class="label">Age</label>
+          <br />
+          <input class="controls-age" type="number" placeholder="18" id ="age" />
+          <br />
+          <input class = "genderRadio" type="radio" name="sex" /> Male
+          <input class = "genderRadio" type="radio" name="sex" /> Female
+          <input class = "genderRadio" type="radio" name="sex" /> Other
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend class="legend">Aditional Information</legend>
+          <label class="label" >Company</label>
+          <br />
+          <input class="controls" type="text" placeholder="Comapny name" id="company" />
+          <br />
+        </fieldset>
+        <br />
+        <input class = "optionButton" type="submit" value="Submit" onclick="validation()"/>
+        <input class = "optionButton" type="button" value="Clean" onclick="cleanInputs()">
+      </section>
+    </section>
+    <br>
+    <script src="myScript.js"></script>
+  </body>
+</html>
