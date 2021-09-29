@@ -20,6 +20,7 @@ namespace TrabajoPractico04.UnitTest
             Assert.AreEqual(result, false);
             
         }
+        [TestMethod]
         public void TestExtensionMethod_WhenImput_Isvalid()
         {
             /*Arrange*/

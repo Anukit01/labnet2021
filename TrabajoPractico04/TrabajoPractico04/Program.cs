@@ -20,7 +20,7 @@ namespace TrabajoPractico04
                     Console.WriteLine("If you wish to insert information, press A.");
                     Console.WriteLine("If you wish to upgrade information, press B.");
                     Console.WriteLine("If you wish to delete information, press C.");
-                    Console.WriteLine("If you wish to retrive information, press D.");
+                    Console.WriteLine("If you wish to retrieve information, press D.");
                     Console.WriteLine("Press S to exit.");
                     menuOption = Console.ReadLine();
                     if (menuOption.ToUpper() == "S")
@@ -28,7 +28,7 @@ namespace TrabajoPractico04
                         Environment.Exit(0);
                     }
 
-                } while (menuOption.IsCorrectMenuOption() == false );
+                } while (!menuOption.IsCorrectMenuOption());
                 do
                 {
                     Console.Clear();
@@ -41,24 +41,9 @@ namespace TrabajoPractico04
                     if (menuOption2.ToUpper() == "S")
                     {
                         Environment.Exit(0);
-                    }
-                    try
-                    {
-                        Helper.ExecuteMenu(menuOption + menuOption2);
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show(string.Format("Oh oh! Something went wrong... [0] Press any key to return to main menu.", (ex.Message))) ;
-                        Console.ReadKey();
-                    }
-                    catch (Exception ex)
-                    {
-                        var exception = ex;
-                        MessageBox.Show($"Oh oh! Something went wrong... {ex.Message} Try again!  Press any key to return to main menu.");
-                        Console.ReadKey();
-                    }
-                                        
-                } while (menuOption2.IsCorrectMenuOption() == false);
+                    }        
+                        Helper.ExecuteMenu(menuOption + menuOption2);                                           
+                } while (!menuOption.IsCorrectMenuOption());
 
             } while (menuOption.ToUpper() != "S");
 

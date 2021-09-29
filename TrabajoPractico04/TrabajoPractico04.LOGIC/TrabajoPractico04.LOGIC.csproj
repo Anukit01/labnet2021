@@ -49,11 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBaseForInt.cs" />
+    <Compile Include="Interfaces\IBaseForString.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
     <Compile Include="Logic\CategoriesLogic.cs" />
     <Compile Include="Logic\CustomersLogic.cs" />
-    <Compile Include="ExtensionMethod\ExtensionMethod.cs" />
-    <Compile Include="Logic\IBaseLogic.cs" />
+    <Compile Include="Interfaces\IBaseLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
