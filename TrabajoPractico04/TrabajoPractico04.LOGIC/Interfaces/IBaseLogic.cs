@@ -2,9 +2,9 @@
 
 namespace TrabajoPractico04.LOGIC
 {
-    internal interface IBaseLogic<T>
+    interface IBaseLogic<T>
     {
-        List<T> Getall();
+        List<T> GetAll();
         void Add(T item);
         void Update(T item);
        

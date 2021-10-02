@@ -1,0 +1,27 @@
+﻿@model List<TrabajoPractico.MVC.Models.CategoriesView>
+@{
+    ViewBag.Title = "Categories";
+}
+<h1> Categories Index</h1>
+<table class="table responsive">
+    <tr>
+        <td>Category ID</td>
+        <td>Category Name</td>
+        <td>Category Description</td>
+    </tr>
+    @using (Html.BeginForm())
+    {
+
+        foreach (var categoryView in Model)
+        {
+            <tr>
+                <td> @categoryView.Id</td>
+                <td> @categoryView.CategoryName</td>
+                <td> @categoryView.Description</td>
+                <td> @Html.ActionLink("Delete", "Delete", new { id = categoryView.Id }, new { onclick = "return confirm('Are you sure you want to delete this?')" })</td>
+                <td> @Html.ActionLink("Update", "Update", new { id = categoryView.Id })</td>
+            </tr>
+        }
+    }</table>
+    
+@Html.ActionLink("Add New Category", "Add")

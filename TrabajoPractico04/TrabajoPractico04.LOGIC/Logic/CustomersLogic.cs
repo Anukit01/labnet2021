@@ -36,7 +36,7 @@ namespace TrabajoPractico04.LOGIC
             }
 
         }
-        public List<Customers> Getall()
+        public List<Customers> GetAll()
         {
             try
             {

@@ -1,0 +1,15 @@
+﻿@model TrabajoPractico.MVC.Models.CategoriesView
+@{
+    ViewBag.Title = " Categories";
+}
+
+<h1> Update a Category</h1>
+@using (Html.BeginForm("Update", "Categories", FormMethod.Post))
+{
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <label>Category ID</label> @Html.HiddenFor(cat => cat.Id)
+    <br>
+    <label>Category Name</label> @Html.TextBoxFor(cat => cat.CategoryName)
+    <label>Description</label> @Html.TextBoxFor(cat => cat.Description)
+    <input type="submit" class="btn btn-success" value="Save"/>
+}

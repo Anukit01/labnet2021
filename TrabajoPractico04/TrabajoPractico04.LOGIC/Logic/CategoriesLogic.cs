@@ -14,12 +14,12 @@ namespace TrabajoPractico04.LOGIC
             {
                 context.Categories.Add(newCategory);
                 context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+}
 
         public void Delete(int id)
         {
@@ -35,7 +35,7 @@ namespace TrabajoPractico04.LOGIC
             }                      
             
         }
-        public List<Categories> Getall()
+        public List<Categories> GetAll()
         {
             try
             {
