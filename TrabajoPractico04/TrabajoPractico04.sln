@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabajoPractico04.UnitTest"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabajoPractico.MVC", "TrabajoPractico.MVC\TrabajoPractico.MVC.csproj", "{CD2EF9C9-8E2D-4B3A-82A7-5D254BCBAF3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrabajoPractico04.API", "TrabajoPractico04.API\TrabajoPractico04.API.csproj", "{944F4CCB-7D93-45A1-B379-7816F626842D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{CD2EF9C9-8E2D-4B3A-82A7-5D254BCBAF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD2EF9C9-8E2D-4B3A-82A7-5D254BCBAF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD2EF9C9-8E2D-4B3A-82A7-5D254BCBAF3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{944F4CCB-7D93-45A1-B379-7816F626842D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944F4CCB-7D93-45A1-B379-7816F626842D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944F4CCB-7D93-45A1-B379-7816F626842D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944F4CCB-7D93-45A1-B379-7816F626842D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
