@@ -5,7 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    background-image: url("https://img.freepik.com/vector-gratis/aurora-boreal-artico-sobre-lago-noche-cielo-estrellado-luces-polares-paisaje-natural-norteno-increible-iluminacion-ondulada-brillante-iridiscente-que-brilla-sobre-superficie-agua-ilustracion-dibujos-animados_107791-6844.jpg?size=626&ext=jpg&ga=GA1.2.1599894018.1628035200"); 
+   /* background-image: url("https://img.freepik.com/vector-gratis/aurora-boreal-artico-sobre-lago-noche-cielo-estrellado-luces-polares-paisaje-natural-norteno-increible-iluminacion-ondulada-brillante-iridiscente-que-brilla-sobre-superficie-agua-ilustracion-dibujos-animados_107791-6844.jpg?size=626&ext=jpg&ga=GA1.2.1599894018.1628035200");*/ 
     padding-left: 15px;
     padding-right: 15px;
 }

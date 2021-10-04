@@ -16,6 +16,7 @@ namespace TrabajoPractico.MVC.Controllers
         public ActionResult Index()
         {
             List<Categories> category = logic.GetAll();
+
             List<CategoriesView> categoryView = category.Select(cat => new CategoriesView
             {
                 Id = cat.CategoryID,
@@ -25,23 +26,53 @@ namespace TrabajoPractico.MVC.Controllers
             return View(categoryView);
         }
 
-        public ActionResult Add()
+        public ActionResult AddAndUpdate(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                var result = logic.GetById((int)id);
+                var categoryView = new CategoriesView()
+                {
+                    Id = result.CategoryID,
+                    CategoryName = result.CategoryName,
+                    Description = result.Description
+                };
+
+                return View(categoryView);
+            }
+            else
+            {
+                return View();
+            }
         }
         [HttpPost]
-        public ActionResult Add(CategoriesView categoriesView)
+        public ActionResult AddAndUpdate(CategoriesView category)
         {
             try
             {
-                Categories categoryEntity = new Categories
+                if (category.Id != 0)
                 {
-                    CategoryName = categoriesView.CategoryName,
-                    Description = categoriesView.Description
-                };
+                    var categoryToUpdate = new Categories()
+                    {
+                        CategoryID = category.Id,
+                        CategoryName = category.CategoryName,
+                        Description = category.Description
+                    };
 
-                logic.Add(categoryEntity);
-                return RedirectToAction("Index");
+                    logic.Update(categoryToUpdate);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Categories categoryEntity = new Categories
+                    {
+                        CategoryName = category.CategoryName,
+                        Description = category.Description
+                    };
+
+                    logic.Add(categoryEntity);
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception)
             {
@@ -54,32 +85,6 @@ namespace TrabajoPractico.MVC.Controllers
         {
             logic.Delete(id);
             return RedirectToAction("Index");
-        }
-        public ActionResult Update(int id)
-        {
-            var result = logic.GetById(id);
-            var categoryView = new CategoriesView()
-            {
-                Id = result.CategoryID,
-                CategoryName = result.CategoryName,
-                Description = result.Description
-            };
-
-            return View(categoryView);
-        }
-        [HttpPost]
-        public ActionResult Update(CategoriesView category)
-        {                  
-                var categoryToUpdate = new Categories()
-                {
-                    CategoryID = category.Id,
-                    CategoryName = category.CategoryName,
-                    Description = category.Description
-                };
-
-                logic.Update(categoryToUpdate);
-            
-            return RedirectToAction("Index");
-        }
+        }     
     }
 }

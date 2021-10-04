@@ -4,7 +4,7 @@
 }
 
 <h1> Update a Category</h1>
-@using (Html.BeginForm("Update", "Categories", FormMethod.Post))
+@using (Html.BeginForm("AddAndUpdate", "Categories", FormMethod.Post))
 {
 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
     <label>Category ID</label> @Html.HiddenFor(cat => cat.Id)
