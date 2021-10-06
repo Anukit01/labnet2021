@@ -7,33 +7,20 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TrabajoPractico.ENTITIES.ExternalApi;
 using TrabajoPractico.MVC.Models;
+using TrabajoPractico04.LOGIC.ExternalApi;
 
 namespace TrabajoPractico.MVC.Controllers
 {
     public class CharactersController : Controller
     {
-        string Baseurl = "http://hp-api.herokuapp.com/";
-        // GET: Characters
+        CharactersLogic logic = new CharactersLogic();
         public async Task<ActionResult> Index()
         {
-
-            List<CharactersView> charInfo = new List<CharactersView>();
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(Baseurl);
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage Res = await client.GetAsync("api/characters");
-                if (Res.IsSuccessStatusCode)
-                {
-                    var charResponse = Res.Content.ReadAsStringAsync().Result;
-                    charInfo = JsonConvert.DeserializeObject<List<CharactersView>>(charResponse);
-                }
-               
-                return View(charInfo);
-            }
-        }
+            List<CharactersPage> lista = await logic.ShowHarryPotterCharacters();
+            return View(lista);
+        }       
 
     }
 }   

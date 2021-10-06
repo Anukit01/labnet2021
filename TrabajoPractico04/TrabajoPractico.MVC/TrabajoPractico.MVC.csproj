@@ -199,9 +199,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TrabajoPractico.ENTITIES.ExternalApi\TrabajoPractico.ENTITIES.ExternalApi.csproj">
+      <Project>{61F9F104-645F-416E-899B-B248ECEF0F50}</Project>
+      <Name>TrabajoPractico.ENTITIES.ExternalApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrabajoPractico04.ENTITIES\TrabajoPractico04.ENTITIES.csproj">
       <Project>{b2e8a910-9470-4783-868e-8ab90465949a}</Project>
       <Name>TrabajoPractico04.ENTITIES</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrabajoPractico04.Logic.ExternalApi\TrabajoPractico04.LOGIC.ExternalApi.csproj">
+      <Project>{CA45A496-AF23-4991-91ED-75470E1B01F5}</Project>
+      <Name>TrabajoPractico04.LOGIC.ExternalApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\TrabajoPractico04.LOGIC\TrabajoPractico04.LOGIC.csproj">
       <Project>{8905D146-F10A-4443-ADA9-5CD2E036CF1E}</Project>
