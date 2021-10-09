@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 using TrabajoPractico04.ENTITIES;
 using TrabajoPractico04.LOGIC;
 
@@ -20,7 +22,7 @@ namespace TrabajoPractico04.API.Controllers
         {
             try
             {
-            return Ok(logic.GetAll());
+                return Ok(Json<List<Categories>>(logic.GetAll()));
             }
             catch
             {
@@ -34,13 +36,12 @@ namespace TrabajoPractico04.API.Controllers
         {
             try
             {
-                return Ok(logic.GetById(id));
+                return Ok(Json<Categories>(logic.GetById(id)));
             }
             catch
             {
                 return BadRequest("Something went wrong.");
             }
-                
         }
 
         // POST api/values
@@ -48,15 +49,17 @@ namespace TrabajoPractico04.API.Controllers
         [Route("add")]
         public IHttpActionResult Post([FromBody] Categories category)
         {
+            JsonResult<Categories> jsonCategory = null;
             try
             {
-               logic.Add(category);
+                logic.Add(category);
+                jsonCategory = Json<Categories>(category);
             }
             catch
             {
                 return BadRequest("Something Went wrong.");
-           }
-            return Ok();
+            }
+            return Created<JsonResult<Categories>>("categories/add", jsonCategory);
         }
 
         // PUT api/values/5
@@ -72,7 +75,7 @@ namespace TrabajoPractico04.API.Controllers
             {
                 return BadRequest("Something Went wrong.");
             }
-            return Ok();
+            return Ok("Content has been succesfully updated");
         }
 
         // DELETE api/values/5
@@ -82,7 +85,7 @@ namespace TrabajoPractico04.API.Controllers
             try
             {
                 logic.Delete(id);
-                
+
             }
             catch
             {

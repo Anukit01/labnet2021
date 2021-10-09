@@ -18,8 +18,8 @@ namespace TrabajoPractico04.LOGIC
             catch (Exception ex)
             {
                 throw ex;
-            }                     
-            
+            }
+
         }
 
         public void Delete(string id)

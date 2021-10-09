@@ -41,8 +41,8 @@ namespace TrabajoPractico04
                     if (menuOption2.ToUpper() == "S")
                     {
                         Environment.Exit(0);
-                    }        
-                        Helper.ExecuteMenu(menuOption + menuOption2);                                           
+                    }
+                    Helper.ExecuteMenu(menuOption + menuOption2);
                 } while (!menuOption.IsCorrectMenuOption());
 
             } while (menuOption.ToUpper() != "S");

@@ -18,9 +18,17 @@ namespace TrabajoPractico.MVC.Controllers
         CharactersLogic logic = new CharactersLogic();
         public async Task<ActionResult> Index()
         {
-            List<CharactersPage> lista = await logic.ShowHarryPotterCharacters();
-            return View(lista);
-        }       
+            try
+            {
+                List<CharactersPage> lista = await logic.ShowHarryPotterCharacters();
+                return View(lista);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error");
+            }   
+        }
+        
 
     }
 }   

@@ -14,12 +14,12 @@ namespace TrabajoPractico04.LOGIC
             {
                 context.Categories.Add(newCategory);
                 context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-}
 
         public void Delete(int id)
         {
@@ -32,14 +32,14 @@ namespace TrabajoPractico04.LOGIC
             catch (Exception ex)
             {
                 throw ex;
-            }                      
-            
+            }
+
         }
         public List<Categories> GetAll()
         {
             try
             {
-            return context.Categories.ToList();
+                return context.Categories.ToList();
             }
             catch (Exception ex)
             {
@@ -51,13 +51,13 @@ namespace TrabajoPractico04.LOGIC
         {
             try
             {
-            return context.Categories.Find(id);
+                return context.Categories.Find(id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-                                  
+
         }
         public void Update(Categories categoryToUpdate)
         {
@@ -69,7 +69,7 @@ namespace TrabajoPractico04.LOGIC
                 categoryUpdated.Picture = categoryToUpdate.Picture;
                 context.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

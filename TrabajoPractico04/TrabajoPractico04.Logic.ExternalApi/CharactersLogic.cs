@@ -17,19 +17,28 @@ namespace TrabajoPractico04.LOGIC.ExternalApi
         {
 
             List<CharactersPage> charInfo = new List<CharactersPage>();
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(Baseurl);
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage Res = await client.GetAsync("api/characters");
-                if (Res.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var charResponse = Res.Content.ReadAsStringAsync().Result;
-                    charInfo = JsonConvert.DeserializeObject<List<CharactersPage>>(charResponse);
-                }
+                    client.BaseAddress = new Uri(Baseurl);
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage Res = await client.GetAsync("api/characters");
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        var charResponse = Res.Content.ReadAsStringAsync().Result;
+                        charInfo = JsonConvert.DeserializeObject<List<CharactersPage>>(charResponse);
 
-                return charInfo;
+                    }
+
+                    return charInfo;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
             }
         }
     }

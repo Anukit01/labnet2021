@@ -17,12 +17,13 @@ namespace TrabajoPractico.MVC.Controllers
         {
             List<Categories> category = logic.GetAll();
 
-            List<CategoriesView> categoryView = category.Select(cat => new CategoriesView
-            {
-                Id = cat.CategoryID,
-                CategoryName = cat.CategoryName,
-                Description = cat.Description,
-            }).ToList();
+            List<CategoriesView> categoryView = category.Select(
+                                                cat => new CategoriesView
+                                                {
+                                                    Id = cat.CategoryID,
+                                                    CategoryName = cat.CategoryName,
+                                                    Description = cat.Description,
+                                                }).ToList();
             return View(categoryView);
         }
 
@@ -37,7 +38,6 @@ namespace TrabajoPractico.MVC.Controllers
                     CategoryName = result.CategoryName,
                     Description = result.Description
                 };
-
                 return View(categoryView);
             }
             else
@@ -77,14 +77,20 @@ namespace TrabajoPractico.MVC.Controllers
             catch (Exception)
             {
                 return RedirectToAction("Index", "Error");
-
             }
         }
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            try
+            {
             logic.Delete(id);
             return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Error");
+            } 
         }     
     }
 }
