@@ -22,7 +22,7 @@ namespace TrabajoPractico04.API.Controllers
         {
             try
             {
-                return Ok(Json<List<Categories>>(logic.GetAll()));
+                return Ok(logic.GetAll());
             }
             catch
             {
