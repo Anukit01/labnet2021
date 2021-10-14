@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Categories } from './northwind/categories/Model/category';
+import { CategoriesService } from './northwind/categories/service/categories.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'practica-angular';
+
+  title = 'Practica-Angular';
+
+  // public listCategories: Array<Categories> = []
+
+
+  // constructor(private categoriesService: CategoriesService) { }
+
+  // ngOnInit(): void {
+  //   this.getCategories();
+  // }
+
+  // getCategories(){
+  //   this.categoriesService.getCategories().subscribe(res =>{
+  //       this.listCategories = res;
+  //       console.log(this.listCategories)
+  //   })
+  // }
+
+
 }

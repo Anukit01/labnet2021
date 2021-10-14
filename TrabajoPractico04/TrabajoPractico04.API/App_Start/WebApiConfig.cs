@@ -13,6 +13,8 @@ namespace TrabajoPractico04.API
             // Configuración y servicios de API web
 
             // Rutas de API web
+            config.EnableCors();
+
             config.MapHttpAttributeRoutes();
 
             config.Formatters.JsonFormatter.SupportedMediaTypes
