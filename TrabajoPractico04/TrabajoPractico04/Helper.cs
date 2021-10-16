@@ -48,15 +48,12 @@ namespace TrabajoPractico04.LOGIC
                         try
                         {
                             customerDb.Update(ShowUpdateCustomerMenu());
+                            repit = true;
                         }
                         catch
                         {
-                            Console.WriteLine("Oops, the customer you are looking for does not exists.");
-                            Console.WriteLine("Do you want to try again? Y - N");
-                            if (Console.ReadLine().ToUpper() != "N")
-                            {
-                                repit = true;
-                            }
+                            Console.WriteLine("Something went worng, make sure you are inserting the ID correctly.");
+                            repit = true;
                         }
                     } while (!repit);
                     break;
@@ -67,16 +64,12 @@ namespace TrabajoPractico04.LOGIC
                         try
                         {
                             categoryDb.Update(ShowUpdateCategoryMenu());
+                            repit = true;
                         }
                         catch
                         {
-                            Console.WriteLine("Oops, the category you are looking for does not exists.");
-                            Console.WriteLine("Do you want to try again? Y - N");
-                            if (Console.ReadLine().ToUpper() != "N")
-                            {
-                                repit = true;
-                            }
-
+                            Console.WriteLine("Something went worng, make sure you are inserting the ID correctly.");
+                            repit = true;
                         }
 
                     } while (!repit);
@@ -112,7 +105,7 @@ namespace TrabajoPractico04.LOGIC
                         try
                         {
                             categoryDb.Delete(Convert.ToInt32(Console.ReadLine()));
-                            
+
                         }
                         catch
                         {
@@ -150,10 +143,11 @@ namespace TrabajoPractico04.LOGIC
                             Console.WriteLine("");
                             Console.WriteLine("Press any key to exit.");
                             Console.ReadKey();
+                            repit = true;
                         }
                         else if (optionCustomerRetriveInfo == 2)
                         {
-                            foreach (var item in customerDb.Getall())
+                            foreach (var item in customerDb.GetAll())
                             {
                                 Console.WriteLine($"Customer ID: {item.CustomerID}");
                                 Console.WriteLine($"Company Name: {item.CompanyName}");
@@ -170,6 +164,7 @@ namespace TrabajoPractico04.LOGIC
                                 Console.ReadKey();
                                 Console.WriteLine("Press any key to exit.");
                                 Console.ReadKey();
+                                repit = true;
 
                             }
                         }
@@ -199,16 +194,18 @@ namespace TrabajoPractico04.LOGIC
                             Console.WriteLine("");
                             Console.WriteLine("Press any key to exit.");
                             Console.ReadKey();
+                            repit = true;
                         }
                         else if (optionCategoryRetriveInfo == 2)
                         {
-                            foreach (var item in categoryDb.Getall())
+                            foreach (var item in categoryDb.GetAll())
                             {
                                 Console.WriteLine($"Category ID: {item.CategoryID}");
                                 Console.WriteLine($"Company Name: {item.CategoryName}");
                                 Console.WriteLine($"Description: {item.Description}");
                                 Console.WriteLine($"picture: {item.Picture}");
                                 Console.WriteLine("");
+                                repit = true;
 
                             }
                             Console.WriteLine("Press any key to exit.");
@@ -284,59 +281,91 @@ namespace TrabajoPractico04.LOGIC
         }
         public static Customers ShowUpdateCustomerMenu()
         {
-            Customers customerToUpdate = new Customers { };
-            String saveChanges = "";
+            bool repit = false;
             do
             {
+                Customers customerToUpdate = new Customers { };
                 Console.WriteLine("Please enter the ID of the customer you want to update: ");
-                customerToUpdate.CustomerID = Console.ReadLine();
-                Console.WriteLine("Company Name: ");
-                customerToUpdate.CompanyName = Console.ReadLine();
-                Console.WriteLine("Contact Name: ");
-                customerToUpdate.ContactName = Console.ReadLine();
-                Console.WriteLine("Contact Title: ");
-                customerToUpdate.ContactTitle = Console.ReadLine();
-                Console.WriteLine("Address: ");
-                customerToUpdate.Address = Console.ReadLine();
-                Console.WriteLine("City: ");
-                customerToUpdate.City = Console.ReadLine();
-                Console.WriteLine("Region: ");
-                customerToUpdate.Region = Console.ReadLine();
-                Console.WriteLine("Postal Code: ");
-                customerToUpdate.PostalCode = Console.ReadLine();
-                Console.WriteLine("Country: ");
-                customerToUpdate.Country = Console.ReadLine();
-                Console.WriteLine("Phone: ");
-                customerToUpdate.Phone = Console.ReadLine();
-                Console.WriteLine("Fax: ");
-                customerToUpdate.Fax = Console.ReadLine();
+                String saveChanges = "";
+                customerToUpdate = customerDb.GetById(Console.ReadLine());
+                if (customerToUpdate == null)
+                {
+                    Console.WriteLine("Oops, the customer you are looking for does not exists.");
+                    Console.WriteLine("Do you want to try again? Y - N");
+                    if (Console.ReadLine().ToUpper() == "N")
+                    {
+                        repit = true;
+                    }
+                }
+                else
+                {
+                    do
+                    {
 
-                Console.WriteLine("Save changes? Y - N ");
-                saveChanges = Console.ReadLine();
-            } while (saveChanges.ToUpper() != "Y");
-            return customerToUpdate;
+                        Console.WriteLine("Company Name: ");
+                        customerToUpdate.CompanyName = Console.ReadLine();
+                        Console.WriteLine("Contact Name: ");
+                        customerToUpdate.ContactName = Console.ReadLine();
+                        Console.WriteLine("Contact Title: ");
+                        customerToUpdate.ContactTitle = Console.ReadLine();
+                        Console.WriteLine("Address: ");
+                        customerToUpdate.Address = Console.ReadLine();
+                        Console.WriteLine("City: ");
+                        customerToUpdate.City = Console.ReadLine();
+                        Console.WriteLine("Region: ");
+                        customerToUpdate.Region = Console.ReadLine();
+                        Console.WriteLine("Postal Code: ");
+                        customerToUpdate.PostalCode = Console.ReadLine();
+                        Console.WriteLine("Country: ");
+                        customerToUpdate.Country = Console.ReadLine();
+                        Console.WriteLine("Phone: ");
+                        customerToUpdate.Phone = Console.ReadLine();
+                        Console.WriteLine("Fax: ");
+                        customerToUpdate.Fax = Console.ReadLine();
+
+                        Console.WriteLine("Save changes? Y - N ");
+                        saveChanges = Console.ReadLine();
+                    } while (saveChanges.ToUpper() != "Y");
+                }
+                return customerToUpdate;
+            } while (!repit);
         }
+
         public static Categories ShowUpdateCategoryMenu()
         {
-
-            Categories categoryToUpdate = new Categories { };
-            String saveChanges = "";
+            bool repit = false;
             do
             {
+                Categories categoryToUpdate = new Categories { };
                 Console.WriteLine("Please enter the ID of the category you want to update: ");
-                categoryToUpdate.CategoryID = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Category Name: ");
-                categoryToUpdate.CategoryName = Console.ReadLine();
-                Console.WriteLine("Description: ");
-                categoryToUpdate.Description = Console.ReadLine();
-                Console.WriteLine("Picture: ");
-                categoryToUpdate.Picture = Encoding.ASCII.GetBytes(Console.ReadLine());
+                String saveChanges = "";
+                categoryToUpdate = categoryDb.GetById(Convert.ToInt32(Console.ReadLine()));
+                if (categoryToUpdate == null)
+                {
+                    Console.WriteLine("Oops, the category you are looking for does not exists.");
+                    Console.WriteLine("Do you want to try again? Y - N");
+                    if (Console.ReadLine().ToUpper() == "N")
+                    {
+                        repit = true;
+                    }
+                }
+                else
+                {
+                    do
+                    {
+                        Console.WriteLine("Category Name: ");
+                        categoryToUpdate.CategoryName = Console.ReadLine();
+                        Console.WriteLine("Description: ");
+                        categoryToUpdate.Description = Console.ReadLine();
+                        Console.WriteLine("Picture: ");
+                        categoryToUpdate.Picture = Encoding.ASCII.GetBytes(Console.ReadLine());
 
-                Console.WriteLine("Save changes? Y - N ");
-                saveChanges = Console.ReadLine();
-            } while (saveChanges.ToUpper() != "N");
-            return categoryToUpdate;
-
+                        Console.WriteLine("Save changes? Y - N ");
+                        saveChanges = Console.ReadLine();
+                    } while (saveChanges.ToUpper() == "N");
+                }
+                return categoryToUpdate;
+            } while (!repit);
         }
 
     }
