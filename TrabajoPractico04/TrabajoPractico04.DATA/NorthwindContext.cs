@@ -19,6 +19,6 @@ namespace TrabajoPractico04.DATA
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
 
-                   }
+        }
     }
 }

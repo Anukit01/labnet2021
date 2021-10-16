@@ -18,8 +18,8 @@ namespace TrabajoPractico04.LOGIC
             catch (Exception ex)
             {
                 throw ex;
-            }                     
-            
+            }
+
         }
 
         public void Delete(string id)
@@ -36,7 +36,7 @@ namespace TrabajoPractico04.LOGIC
             }
 
         }
-        public List<Customers> Getall()
+        public List<Customers> GetAll()
         {
             try
             {
