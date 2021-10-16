@@ -1,0 +1,31 @@
+<div class="container-md">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">*</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col"> Options</th>
+    </tr>
+  </thead>
+  <tbody *ngFor = "let item of listCategories; let i = index">
+    <tr>
+      <td scope = "row">{{i}}</td>
+      <td>{{item.CategoryName}}</td>
+      <td>{{item.Description}}</td>
+      <td>
+
+        <button class= "buttons"  mat-fab color="accent"> <span class="material-icons-outlined">
+          delete
+          </span></button>
+        <!-- <a href="form" mat-raised-button color="accent" (click)="edit(i)"> Update </a> -->
+        <button class= "buttons" mat-raised-button color="accent" (click)="edit(i)" > Update </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-form-c (changed)="updateToForm($event)" [categoryToUpDate]="categoryToUpDate"> </app-form-c>
+
+</div>
+
+

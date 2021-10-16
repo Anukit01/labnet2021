@@ -1,0 +1,17 @@
+.container-md{
+  font-size: 14pt;
+}
+.label{
+  font-style: bold;
+  margin-bottom: 5pt;
+  margin-top: 7pt;
+}
+.input{
+  margin-bottom: 4pt;
+  margin-top: 4pt;
+}
+.buttons{
+  margin-top: 5pt;
+  margin-bottom: 5pt;
+  margin-right: 3pt;
+}

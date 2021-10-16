@@ -1,0 +1,8 @@
+{
+    "/categories/*":{
+        "target": "http://localhost:62712",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

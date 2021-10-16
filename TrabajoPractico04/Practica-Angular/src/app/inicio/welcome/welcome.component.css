@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+  *{
+  font-family: "Indie Flower", cursive;
+  }
+  .container{
+    text-align: center;
+    text-decoration: cornsilk;
+    font-size: 18pt;
+    line-height: 1.5;
+  }
+  .h1{
+    font-family: "Indie Flower", cursive;
+    font-size: 26pt;
+    font-weight: bold;
+  }
