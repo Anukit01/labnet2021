@@ -10,5 +10,5 @@ import { CategoriesService } from './northwind/categories/service/categories.ser
 export class AppComponent {
 
   title = 'Practica-Angular';
-  
+
 }

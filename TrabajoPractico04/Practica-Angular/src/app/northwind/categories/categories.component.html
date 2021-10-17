@@ -1,16 +1,17 @@
 <div class="container-md">
+  <button class= "buttons" type = "button" mat-raised-button color="accent"  > Add new </button>
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">*</th>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col"> Options</th>
     </tr>
   </thead>
-  <tbody *ngFor = "let item of listCategories; let i = index">
+  <tbody *ngFor = "let item of listCategories;">
     <tr>
-      <td scope = "row">{{i}}</td>
+      <td scope = "row">{{item.CategoryID}}</td>
       <td>{{item.CategoryName}}</td>
       <td>{{item.Description}}</td>
       <td>
@@ -19,13 +20,14 @@
           delete
           </span></button>
         <!-- <a href="form" mat-raised-button color="accent" (click)="edit(i)"> Update </a> -->
-        <button class= "buttons" mat-raised-button color="accent" (click)="edit(i)" > Update </button>
+        <button class= "buttons" mat-raised-button color="accent" (click)="edit(item.CategoryID)" (click)="show = !show" > Update </button>
       </td>
     </tr>
   </tbody>
 </table>
-<app-form-c (changed)="updateToForm($event)" [categoryToUpDate]="categoryToUpDate"> </app-form-c>
-
+<div *ngIf="show">
+<app-form-c [categoryToUpDate]="categoryToUpDate"> </app-form-c>
+</div>
 </div>
 
 

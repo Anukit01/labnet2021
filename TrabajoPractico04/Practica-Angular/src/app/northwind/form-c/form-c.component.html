@@ -1,18 +1,45 @@
 <!-- <app-categories [categoryUpDated]="categoryUpDated"> </app-categories> -->
-
+<div Class="container" >
+  <div class="row">
+    <div class="col">
      <form [formGroup] = "form" (ngSubmit)="onSubmit()">
        <div class ="container-md">
         <div class="form-group">
-          <label for="CategoryName" class="label" >Category Name</label>
+          <label for="CategoryName" class="label">
+            Category Name
+          </label>
           <input class= "input" formControlName = "CategoryName" class="form-control" type ="text" class ="form-control" placeholder="Name" required minlength="4">
+          <div *ngIf="nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched)" class="alert">
+           <div class="validation" *ngIf="nameCtrl.errors?.required" >
+              Name is required.
+            </div>
+           <div class="validation" *ngIf="nameCtrl.errors?.minlength">
+              Name must be at least 4 characters long.
+            </div>
+            <div class="validation" *ngIf="nameCtrl.errors?.maxlength">
+              Name can't be more than 15 characters long.
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="Description" class="label" >Category Description</label>
           <input class= "input" formControlName = "Description" class="form-control" type ="text" class ="form-control" placeholder="description">
+          <div *ngIf="descriptionCtrl.invalid && (descriptionCtrl.dirty || descriptionCtrl.touched)" class="alert">
+            <div class="validation" *ngIf="descriptionCtrl.errors?.required">
+              Description is required.
+            </div>
           </div>
-        <button class= "buttons" type = "submit" mat-raised-button color="accent" > Add </button>
-        <button class= "buttons" type = "button" mat-raised-button color="accent" (click) ="onClickClean()" >Clean </button>
+         <button class= "buttons" type = "submit" mat-raised-button color="accent"
+              [disabled]="!form.valid">
+              <!-- (click)="add(nameCtrl.value, descriptionCtrl.value);
+              nameCtrl.value =''"  -->
+               save
+          </button>
+         <button class= "buttons" type = "button" mat-raised-button color="accent" (click) ="onClickClean()" >Clean </button>
        </div>
-    </form>
-
+       </div>
+      </form>
+    </div>
+  </div>
+</div>
 

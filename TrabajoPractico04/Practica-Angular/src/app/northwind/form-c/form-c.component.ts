@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoriesComponent } from '../categories/categories.component';
+
 import { CategoriesService } from '../categories/service/categories.service';
+import { CategoriesComponent } from '../categories/categories.component';
 import { Categories } from '../categories/Model/category';
-// import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-form-c',
@@ -13,18 +13,19 @@ import { Categories } from '../categories/Model/category';
 export class FormCComponent implements OnInit {
 
   @Input() categoryToUpDate: Categories;
-  @Output() changed = new EventEmitter<Categories>()
+
 
   // public categoryToAdd: Categories;
-  public categoryUpdated: Categories;
-  public categoryPrueba: Categories;
+  public category: Categories;
+
+
   // public sendCategory: Category
 
   form: FormGroup;
 
-  // CategoryName = new FormControl('');
-  // Description = new FormControl('');
-
+  get IDCtrl(): AbstractControl{
+    return this.form.get("CategoryID");
+  }
   get nameCtrl(): AbstractControl{
     return this.form.get("CategoryName");
   }
@@ -40,32 +41,23 @@ export class FormCComponent implements OnInit {
 
   ngOnInit(): void {
     this.form =  this.fb.group({
-      CategoryName: [''],
-      Description: ['']
+      CategoryName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+      Description: ['', Validators.required]
     });
-    this.form.reset();
+
   }
-
-  ngOnChange(): void{
-    if (this.categoryToUpDate != null){
-
-      console.log(this.categoryToUpDate);
-    }
-    else {
-      console.log("NOOOO");
-    }
-  }
-
 
   onSubmit(): void {
-      this.form.getRawValue()
-      this.categoryToUpDate = this.form.getRawValue();
-     this.changed.emit(this.categoryToUpDate)
+    this.category.CategoryID = this.form.get("CategoryID").value;
+    this.category.CategoryName = this.form.get("CategoryName").value;
+    this.category.Description = this.form.get("Description").value;
+    console.log(this.category)
 
-     console.log(this.form.value)
-     console.log(this.categoryToUpDate)
-
-      // this.categoriesService.
+    // this.categoriesService.updateCategory(this.category).subscribe(res =>{
+    //   this.form.reset();
+    //   console.log("Succesfull save.")
+    //   this.goBack();
+    // });
     }
 
 
@@ -74,6 +66,13 @@ export class FormCComponent implements OnInit {
     this.form.reset();
   }
 
+  // add(nameCtrl: string, descriptionCtrl: string): void{
+  // nameCtrl = nameCtrl.trim();
+  // if (!nameCtrl) { return; }
+  // this.categoriesService.addCategory({ nameCtrl, descriptionCtrl } as Categories)
+  //   .subscribe(hero => {
+  //     this..push(hero);
+  //   });
   // get f() {return this.formC.controls; }
 
 

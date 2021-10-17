@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { TouchSequence } from 'selenium-webdriver';
 import { Categories } from './Model/category';
 import { CategoriesService } from './service/categories.service';
-
+import { MessageService } from '../messages/service/message.service';
 // import { ConsoleReporter } from 'jasmine';
 
 
@@ -21,6 +21,8 @@ export class CategoriesComponent {
 
   categoryToUpDate: Categories;
 
+  show: false;
+
   constructor(private categoriesService: CategoriesService) {
 
    }
@@ -30,24 +32,28 @@ export class CategoriesComponent {
   }
 
   getCategories(){
-    this.listCategories = this.categoriesService.listCategories;
-    console.log(this.listCategories[1]);
-    console.log(this.listCategories);
+    this.categoriesService.getCategories().subscribe(res =>{
+      this.listCategories = res;
+    })
     }
 
-  edit(x: number){
-    console.log("xxx", x ),
-    console.log(this.listCategories[x]);
-    this.categoryToUpDate = this.listCategories[x];
-    console.log(this.categoryToUpDate)
-  }
+  // edit(nameCtrl: string, descriptionCtrl: String){
+  //   console.log("xxx" ),
+  //   console.log(this.listCategories[x]);
+  //   this.categoryToUpDate = this.listCategories[x];
+  //   console.log(this.categoryToUpDate)
+
+  //   this.categoriesService.updateCategory(this.categoryToUpDate)
+  //   .subscribe(() => this.goBack());
+
+  // }
   updateToForm(cat: Categories){
-    console.log(cat)
-    this.listCategories.indexOf(cat);
-    this.listCategories.find
+    // console.log(cat)
+    // this.listCategories.indexOf(cat);
+    // this.listCategories.find
 
 
-    this.listCategories.push(cat)
+    // this.listCategories.push(cat)
     // console.log(cat);
     // this.listCategories.forEach(( item, index) =>{
     //   if(item.CatedoryID === cat.CatedoryID)
