@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TouchSequence } from 'selenium-webdriver';
+import { Component } from '@angular/core';
+
 import { Categories } from './Model/category';
 import { CategoriesService } from './service/categories.service';
-import { MessageService } from '../messages/service/message.service';
-// import { ConsoleReporter } from 'jasmine';
-
-
 
 @Component({
   selector: 'app-categories',
@@ -17,11 +12,10 @@ export class CategoriesComponent {
 
   public listCategories: Array<Categories> = []
 
-  public sendCategorytoUpdate: Categories
+  category: Categories;
+  data: boolean = false;
 
-  categoryToUpDate: Categories;
-
-  show: false;
+  show: boolean = false;
 
   constructor(private categoriesService: CategoriesService) {
 
@@ -29,6 +23,15 @@ export class CategoriesComponent {
 
   ngOnInit(): void {
     this.getCategories();
+
+  }
+  ngDoCheck(){
+    this.getCategories();
+
+  }
+
+  openForm(){
+    this.show = true
   }
 
   getCategories(){
@@ -37,31 +40,31 @@ export class CategoriesComponent {
     })
     }
 
-  // edit(nameCtrl: string, descriptionCtrl: String){
-  //   console.log("xxx" ),
-  //   console.log(this.listCategories[x]);
-  //   this.categoryToUpDate = this.listCategories[x];
-  //   console.log(this.categoryToUpDate)
+    edit(item : Categories){
+      console.log(item)
+      this.category = item
+      console.log(this.category)
+    }
+    add(){
+      var emptyCategory: Categories = {
+       CategoryID: null,
+       CategoryName: "name",
+       Description: "description"
+      }
+      this.category = emptyCategory;
 
-  //   this.categoriesService.updateCategory(this.categoryToUpDate)
-  //   .subscribe(() => this.goBack());
+      console.log(this.category)
+    }
 
-  // }
-  updateToForm(cat: Categories){
-    // console.log(cat)
-    // this.listCategories.indexOf(cat);
-    // this.listCategories.find
+    deleteCategory(category: Categories){
+      this.listCategories = this.listCategories.filter(c => c !== category);
+      this.categoriesService.deleteCategory(category).subscribe();
+    }
 
-
-    // this.listCategories.push(cat)
-    // console.log(cat);
-    // this.listCategories.forEach(( item, index) =>{
-    //   if(item.CatedoryID === cat.CatedoryID)
-    //   this.listCategories.splice(index,1);}
-    // );
-    // this.listCategories.push(cat)
-
-  }
-
-
+    react(data: boolean){
+      if(data){
+        this.getCategories();
+        this.data = false;
+      }
+    }
 }

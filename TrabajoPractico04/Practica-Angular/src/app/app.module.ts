@@ -10,7 +10,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 
 import {MatButtonModule} from '@angular/material/button';
-import { CategoriesService } from './northwind/categories/service/categories.service';
+import { InMemoryDataServiceService } from './northwind/categories/service/in-memory-data-service.service';
 
 
 
@@ -26,7 +26,7 @@ import { CategoriesService } from './northwind/categories/service/categories.ser
     HttpClientModule,
     HttpClientInMemoryWebApiModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      CategoriesService, { dataEncapsulation: false }
+      InMemoryDataServiceService, { dataEncapsulation: false }
     ),
     MatButtonModule
   ],

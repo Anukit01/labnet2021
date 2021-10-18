@@ -1,5 +1,5 @@
 <div class="container-md">
-  <button class= "buttons" type = "button" mat-raised-button color="accent"  > Add new </button>
+  <button class= "buttons" type = "button" mat-raised-button color="accent" (click)="add()" (click)="openForm()" > Add new </button>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -15,18 +15,15 @@
       <td>{{item.CategoryName}}</td>
       <td>{{item.Description}}</td>
       <td>
-
-        <button class= "buttons"  mat-fab color="accent"> <span class="material-icons-outlined">
-          delete
-          </span></button>
-        <!-- <a href="form" mat-raised-button color="accent" (click)="edit(i)"> Update </a> -->
-        <button class= "buttons" mat-raised-button color="accent" (click)="edit(item.CategoryID)" (click)="show = !show" > Update </button>
+        <button class= "buttons"  mat-fab color="accent" (click)="deleteCategory(item)" > <i class="bi bi-trash">Delete</i></button>
+        <button class= "buttons" mat-raised-button color="accent" (click)="edit(item)" (click)="openForm()" > Update </button>
       </td>
     </tr>
   </tbody>
 </table>
 <div *ngIf="show">
-<app-form-c [categoryToUpDate]="categoryToUpDate"> </app-form-c>
+<app-form-c [category]="category" [react]= "react"></app-form-c>
+
 </div>
 </div>
 

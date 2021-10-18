@@ -8,7 +8,7 @@
           <label for="CategoryName" class="label">
             Category Name
           </label>
-          <input class= "input" formControlName = "CategoryName" class="form-control" type ="text" class ="form-control" placeholder="Name" required minlength="4">
+          <input class= "input" formControlName = "CategoryName" class="form-control" type ="text" class ="form-control" placeholder="{{category.CategoryName}}" required minlength="4">
           <div *ngIf="nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched)" class="alert">
            <div class="validation" *ngIf="nameCtrl.errors?.required" >
               Name is required.
@@ -23,16 +23,14 @@
         </div>
         <div class="form-group">
           <label for="Description" class="label" >Category Description</label>
-          <input class= "input" formControlName = "Description" class="form-control" type ="text" class ="form-control" placeholder="description">
+          <input class= "input" formControlName = "Description" class="form-control" type ="text" class ="form-control" placeholder="{{category.Description}}">
           <div *ngIf="descriptionCtrl.invalid && (descriptionCtrl.dirty || descriptionCtrl.touched)" class="alert">
             <div class="validation" *ngIf="descriptionCtrl.errors?.required">
               Description is required.
             </div>
           </div>
          <button class= "buttons" type = "submit" mat-raised-button color="accent"
-              [disabled]="!form.valid">
-              <!-- (click)="add(nameCtrl.value, descriptionCtrl.value);
-              nameCtrl.value =''"  -->
+              [disabled]="!form.valid" (click)="saveCategory()">
                save
           </button>
          <button class= "buttons" type = "button" mat-raised-button color="accent" (click) ="onClickClean()" >Clean </button>
